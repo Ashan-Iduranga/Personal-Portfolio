@@ -1,0 +1,109 @@
+/*
+  skills.css
+  The skills section, built by js/skills.js:
+  a grid of cards (one per category), each holding chips (logo + name).
+  3 columns on desktop, 2 on tablet, 1 on phones.
+  The arrival animations live in css/motion.css.
+*/
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+/* ---------- Card ---------- */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+  transition:
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.skill-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 14px 36px -14px rgb(0 0 0 / 0.35);
+}
+
+.skill-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* ---------- Chips ---------- */
+.skill-card__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    translate var(--duration-fast) var(--ease-out);
+}
+
+.skill-chip__icon {
+  flex-shrink: 0;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--color-text);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.skill-chip__name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Hover: accent border, soft accent glow, logo turns accent (the lift is in motion.css) */
+.skill-chip:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.skill-chip:hover .skill-chip__icon {
+  color: var(--color-accent);
+}
+
+/* ---------- Tablet: 2 columns ---------- */
+@media (max-width: 1023px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Phone: 1 column, a little less padding ---------- */
+@media (max-width: 639px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .skill-card {
+    padding: var(--space-5);
+    gap: var(--space-4);
+  }
+}

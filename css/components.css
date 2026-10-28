@@ -1,0 +1,207 @@
+/*
+  components.css
+  Reusable pieces used in more than one section:
+  buttons, round icon buttons, the copy button, inline text links, tags, and form fields.
+*/
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;   /* button labels never wrap */
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.btn i {
+  font-size: 1.05em;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+/* The arrow nudges forward on hover, in the direction it points */
+.btn:hover i {
+  transform: translate(2px, -2px);
+}
+
+.btn:hover .ph-arrow-down-right {
+  transform: translate(2px, 2px);
+}
+
+.btn:hover .ph-download-simple {
+  transform: translateY(2px);
+}
+
+/* Tactile press */
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-primary-btn);
+  color: var(--color-on-primary);
+}
+
+/* On hover the button turns accent blue. Text keeps --color-on-primary,
+   which passes contrast on the blue in both themes. */
+.btn--primary:hover {
+  background: var(--color-accent);
+}
+
+.btn--ghost {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn--small {
+  min-height: 40px;
+  padding: 0 var(--space-4);
+}
+
+/* ---------- Round icon button ---------- */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  font-size: 1.15rem;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.icon-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* ---------- Copy button (small, sits next to the text it copies) ---------- */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.copy-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.copy-btn.is-copied {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+/* ---------- Inline text link inside a sentence ---------- */
+.text-link {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border-strong);
+  transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.text-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* ---------- Tag ---------- */
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Form fields: label above, hint and error below ---------- */
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.field__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.field__input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  color: var(--color-text);
+  transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.field__input:hover {
+  border-color: var(--color-text-muted);
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.field__input--textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Set by js/contact.js when a field fails validation */
+.field__input[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.field__hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.field__error {
+  font-size: var(--text-xs);
+  color: var(--color-error);
+}
+
+.field__error:empty {
+  display: none;
+}

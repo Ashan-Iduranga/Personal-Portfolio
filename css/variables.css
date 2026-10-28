@@ -1,0 +1,132 @@
+/*
+  variables.css
+  Design tokens: every colour, font, size, space, radius and timing used on the site.
+  Change a value here and it updates everywhere. Other CSS files should only use var(--...).
+
+  Theme logic (tricky part):
+  1. :root holds the DARK theme (the default look).
+  2. If the visitor's device prefers light AND they haven't picked a theme, light values apply.
+  3. If they pick a theme with the toggle, js/theme.js sets data-theme="light" or "dark" on <html>.
+*/
+
+:root {
+  /* ---------- Colours: dark theme (default) ---------- */
+  --color-bg: #121418;            /* page background (graphite) */
+  --color-surface: #1b1e23;       /* cards, panels */
+  --color-surface-2: #23272d;     /* raised elements, hover */
+  --color-border: rgb(236 236 234 / 0.09);
+  --color-border-strong: rgb(236 236 234 / 0.2);
+  --color-text: #ececea;          /* primary text (off-white) */
+  --color-text-muted: #8c9199;    /* secondary text (steel grey) */
+  --color-accent: #4a90c8;        /* the one accent colour (ocean blue) */
+  --color-accent-soft: rgb(74 144 200 / 0.14);
+  --color-on-primary: #121418;    /* text on the solid primary button */
+  --color-primary-btn: #ececea;   /* solid primary button background */
+  --color-error: #f08a8a;
+  --color-success: #7cc3a0;
+  --image-filter: grayscale(1) contrast(1.05) brightness(0.92);
+  --photo-dim: 0.78;               /* photos (hero, about): dim bright backdrops on the dark page */
+  --photo-vignette: 70%;           /* photos (hero, about): how strongly edges fade into the page */
+
+  /* ---------- Fonts ---------- */
+  --font-display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* ---------- Type scale (clamp = min, fluid, max) ---------- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.35rem, 1.1rem + 1.1vw, 1.9rem);
+  --text-2xl: clamp(2.5rem, 1.6rem + 4vw, 4.75rem);
+  --text-hero: clamp(4.25rem, 1.5rem + 11vw, 10.5rem);
+
+  /* ---------- Spacing ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-space: clamp(4.5rem, 2.5rem + 5.5vw, 7.5rem);  /* top/bottom padding of each section */
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);    /* page side padding */
+  --container-max: 1320px;
+  --navbar-height: 72px;
+
+  /* ---------- Shape rule ----------
+     Controls (buttons, inputs, filter chips) = --radius-control
+     Containers (cards, panels, images)      = --radius-card
+     Round icon buttons                       = --radius-full */
+  --radius-control: 6px;
+  --radius-card: 16px;
+  --radius-full: 999px;
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-ui: 260ms;   /* navbar hide/show, mobile menu, sliding underline */
+  --duration-base: 450ms;
+  --duration-slow: 900ms;
+
+  /* ---------- Layers (z-index scale) ---------- */
+  --z-navbar: 100;
+  --z-menu: 90;
+  --z-skip: 200;
+
+  color-scheme: dark;
+}
+
+/* Light theme values. Written twice on purpose:
+   once for "device prefers light" and once for "visitor chose light". */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-bg: #eeeff1;
+    --color-surface: #ffffff;
+    --color-surface-2: #e4e6ea;
+    --color-border: rgb(22 25 30 / 0.1);
+    --color-border-strong: rgb(22 25 30 / 0.24);
+    --color-text: #16191e;
+    --color-text-muted: #555b65;
+    --color-accent: #2b6ca6;
+    --color-accent-soft: rgb(43 108 166 / 0.1);
+    --color-on-primary: #f4f5f6;
+    --color-primary-btn: #16191e;
+    --color-error: #b3261e;
+    --color-success: #1f7a4d;
+    --image-filter: grayscale(1) contrast(1.02);
+    --photo-dim: 1;
+    --photo-vignette: 25%;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --color-bg: #eeeff1;
+  --color-surface: #ffffff;
+  --color-surface-2: #e4e6ea;
+  --color-border: rgb(22 25 30 / 0.1);
+  --color-border-strong: rgb(22 25 30 / 0.24);
+  --color-text: #16191e;
+  --color-text-muted: #555b65;
+  --color-accent: #2b6ca6;
+  --color-accent-soft: rgb(43 108 166 / 0.1);
+  --color-on-primary: #f4f5f6;
+  --color-primary-btn: #16191e;
+  --color-error: #b3261e;
+  --color-success: #1f7a4d;
+  --image-filter: grayscale(1) contrast(1.02);
+  --photo-dim: 1;
+  --photo-vignette: 25%;
+  color-scheme: light;
+}
+
+/* Smaller navbar on phones */
+@media (max-width: 767px) {
+  :root {
+    --navbar-height: 64px;
+  }
+}

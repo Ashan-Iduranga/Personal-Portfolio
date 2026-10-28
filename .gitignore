@@ -1,0 +1,10 @@
+# Full-size original photos (the site uses the compressed copies in assets/images/)
+.originals/
+
+# Local working files from the Impeccable design tool
+.impeccable/
+
+# Browser-test leftovers and OS clutter
+.playwright-mcp/
+Thumbs.db
+.DS_Store

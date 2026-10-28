@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--
+  index.html
+  The page structure only. No styles or scripts live in here:
+  - Look & feel  -> css/ folder (start with css/variables.css)
+  - Behaviour    -> js/ folder (start with js/main.js)
+  - Content data -> js/data/ (profile links, skills and projects lists)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashan Iduranga | Software Engineer</title>
+  <meta name="description" content="Portfolio of Ashan Iduranga, a third-year software engineering undergraduate building web and mobile apps.">
+  <meta name="theme-color" content="#121418">
+  <link rel="canonical" href="https://ashaniduranga.me/">
+
+  <!-- Link preview: the card shown when the site is shared on LinkedIn, WhatsApp, X, etc.
+       Sites need the image's FULL web address, so the preview only works once the site
+       is live at ashaniduranga.me. Image: assets/images/og-preview.jpg (1200 x 630). -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ashaniduranga.me/">
+  <meta property="og:title" content="Ashan Iduranga | Software Engineer">
+  <meta property="og:description" content="Portfolio of Ashan Iduranga, a third-year software engineering undergraduate building web and mobile apps.">
+  <meta property="og:image" content="https://ashaniduranga.me/assets/images/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ashan Iduranga, software engineering undergraduate">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Anton (big display headings), Geist (body text), Geist Mono (small labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+
+  <!-- Icon libraries: Phosphor (interface icons) and Devicon (technology logos) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css">
+
+  <!-- Our styles, in order: tokens, base, layout, shared components, then one file per section -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <!-- Scroll animations last, so they can build on the section styles above -->
+  <link rel="stylesheet" href="css/motion.css">
+
+  <!-- Loaded early (no defer) so the saved light/dark theme applies before the page paints -->
+  <script src="js/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Invisible marker at the very top. navbar.js watches it to know when the page has scrolled. -->
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a class="navbar__logo" href="#top" aria-label="Ashan Iduranga, back to top"><span class="navbar__logo-word">Ashan</span><span class="navbar__logo-dot">.</span></a>
+
+      <nav class="navbar__menu" id="navbar-menu" aria-label="Main">
+        <!-- data-stagger: the mobile menu brings these links in one after another -->
+        <ul class="navbar__links" data-stagger>
+          <li><a class="navbar__link" href="#about">About</a></li>
+          <li><a class="navbar__link" href="#projects">Projects</a></li>
+          <li><a class="navbar__link" href="#skills">Skills</a></li>
+          <li><a class="navbar__link navbar__link--mobile-only" href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Profile links, only shown inside the mobile menu.
+             --reveal-index = number of links above, so this row arrives after them -->
+        <ul class="navbar__profiles" style="--reveal-index: 4">
+          <li>
+            <a class="navbar__profile" href="https://github.com/Ashan-Iduranga" target="_blank" rel="noopener">
+              <i class="ph ph-github-logo" aria-hidden="true"></i> GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a class="navbar__profile" href="https://www.linkedin.com/in/ashan-iduranga" target="_blank" rel="noopener">
+              <i class="ph ph-linkedin-logo" aria-hidden="true"></i> LinkedIn <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">
+          <i class="ph ph-sun theme-icon theme-icon--sun" aria-hidden="true"></i>
+          <i class="ph ph-moon theme-icon theme-icon--moon" aria-hidden="true"></i>
+        </button>
+        <a class="btn btn--primary btn--small navbar__cta" href="#contact">
+          Contact me <i class="ph ph-arrow-down-right" aria-hidden="true"></i>
+        </a>
+        <button class="icon-btn navbar__toggle" id="navbar-toggle" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="navbar-menu">
+          <i class="ph ph-list navbar__toggle-open" aria-hidden="true"></i>
+          <i class="ph ph-x navbar__toggle-close" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Thin reading-progress line under the bar (css/motion.css) -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__line">Ashan</span>
+            <span class="hero__line">Iduranga<span class="accent-text">.</span></span>
+          </h1>
+          <p class="hero__lead">
+            Software engineering undergraduate building responsive websites, cross-platform mobile apps, and the backends,
+            from the database to the last pixel.
+          </p>
+          <p class="hero__status">
+            <span class="hero__status-dot" aria-hidden="true"></span>
+            Learning by building, one project at a time.
+          </p>
+          <!-- GitHub comes first: seeing the real code is the main thing a visitor should do -->
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://github.com/Ashan-Iduranga" target="_blank" rel="noopener">
+              <i class="ph ph-github-logo" aria-hidden="true"></i> See my code on GitHub
+            </a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/ashan-iduranga" target="_blank" rel="noopener">
+              <i class="ph ph-linkedin-logo" aria-hidden="true"></i> LinkedIn
+            </a>
+            <!-- Replace assets/cv/ashan-iduranga-cv.pdf with your real CV (same file name) -->
+            <a class="btn btn--ghost" href="assets/cv/ashan-iduranga-cv.pdf" download>
+              <i class="ph ph-download-simple" aria-hidden="true"></i> Download CV
+            </a>
+          </div>
+          <a class="hero__more" href="#projects">
+            Or scroll to the projects <i class="ph ph-arrow-down" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <figure class="hero__media">
+          <!-- Replace assets/images/hero-portrait.jpg with your own photo (portrait, about 900 x 1200).
+               Until then, js/images.js shows the data-fallback image instead. -->
+          <img class="hero__image" src="assets/images/hero-portrait.jpg"
+               data-fallback="https://picsum.photos/seed/ashan-hero-studio/900/1200?grayscale"
+               alt="Portrait of Ashan Iduranga" width="896" height="1200" fetchpriority="high">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <h2 class="visually-hidden" id="about-title">About me</h2>
+        <div class="about__statement reveal">
+          <p data-split="read">
+            Hey! I’m Ashan, a Software Engineering undergraduate at NSBM Green University in Sri Lanka,
+            and I love turning ideas into <em>working apps</em>. I mostly build for the web and mobile,
+            and I’m happiest when a project goes from a rough sketch in Figma to something real people
+            can tap, scroll and use.
+          </p>
+          <p data-split="read">
+            Right now, I’m in my third year and I build things like responsive websites, cross-platform mobile 
+            apps, and the backends and databases that power them, from user logins and real-time data to REST APIs. 
+            Along the way, I use AI tools to move faster, while making sure I understand every 
+            piece of code I ship.
+          </p>
+          <p data-split="read">
+            When I’m not studying, you’ll probably find me gaming, practicing Kandyan dancing, or coding
+            a side project just for fun.
+          </p>
+        </div>
+
+        <figure class="about__media reveal reveal-media parallax">
+          <!-- Replace assets/images/about-workspace.jpg with a photo of you or your setup (about 800 x 1000) -->
+          <img src="assets/images/about-workspace.jpg"
+               data-fallback="https://picsum.photos/seed/ashan-desk-setup/800/1000?grayscale"
+               alt="Ashan standing at his desk with a laptop and a monitor showing code" width="928" height="1152" loading="lazy">
+        </figure>
+
+        <dl class="about__facts" data-stagger>
+          <div class="fact reveal">
+            <dt class="fact__label">Based in</dt>
+            <dd class="fact__value">Homagama, Sri Lanka</dd>
+          </div>
+          <div class="fact reveal">
+            <dt class="fact__label">Studying</dt>
+            <dd class="fact__value">BSc (Hons) Software Engineering, NSBM Green University</dd>
+          </div>
+          <div class="fact reveal">
+            <dt class="fact__label">Focus</dt>
+            <dd class="fact__value">Full-stack web and cross-platform mobile apps</dd>
+          </div>
+          <div class="fact reveal">
+            <dt class="fact__label">Open to</dt>
+            <dd class="fact__value">Internships and freelance work, graduating in 2028</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title" id="projects-title" data-split="rise">Things I've built</h2>
+          <p class="section-lead">For clients, for myself and for university.</p>
+        </header>
+
+        <!-- Project cards are rendered by js/projects.js from js/data/projects.js -->
+        <div class="projects__grid" id="projects-grid"></div>
+
+        <!-- One GitHub link for all the projects, instead of a link on every card -->
+        <div class="projects__more reveal">
+          <a class="btn btn--ghost" href="https://github.com/Ashan-Iduranga" target="_blank" rel="noopener">
+            <i class="ph ph-github-logo" aria-hidden="true"></i> See all my code on GitHub
+            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- "On the workbench" ideas, rendered by js/projects.js from BREWING in js/data/projects.js -->
+        <div class="projects__brewing" id="projects-brewing"></div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title" id="skills-title" data-split="rise">From the database to the last pixel</h2>
+          <p class="section-lead">Everything here is under two years of hands-on use, mostly through university modules and my own projects.</p>
+        </header>
+
+        <!-- Skill cards are rendered here by js/skills.js from js/data/skills.js -->
+        <div class="skills__body" id="skills-body"></div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__panel reveal">
+          <div class="contact__intro">
+            <h2 class="contact__title" id="contact-title" data-split="rise">Let's build something<span class="accent-text">.</span></h2>
+            <p class="contact__text">Open to internships, freelance work and student collaborations. I usually reply within a day.</p>
+
+            <ul class="contact__details">
+              <li>
+                <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+                <a href="mailto:idurangaashan2001@gmail.com">idurangaashan2001@gmail.com</a>
+                <!-- Copies the address, for visitors without an email app (js/contact.js) -->
+                <button class="copy-btn" id="copy-email" type="button" data-copy="idurangaashan2001@gmail.com">
+                  <i class="ph ph-copy" aria-hidden="true"></i> <span class="copy-btn__label" aria-live="polite">Copy</span>
+                </button>
+              </li>
+              <li>
+                <i class="ph ph-github-logo" aria-hidden="true"></i>
+                <a href="https://github.com/Ashan-Iduranga" target="_blank" rel="noopener">github.com/Ashan-Iduranga</a>
+              </li>
+              <li>
+                <i class="ph ph-linkedin-logo" aria-hidden="true"></i>
+                <a href="https://www.linkedin.com/in/ashan-iduranga" target="_blank" rel="noopener">linkedin.com/in/ashan-iduranga</a>
+              </li>
+              <li>
+                <i class="ph ph-file-text" aria-hidden="true"></i>
+                <a href="assets/cv/ashan-iduranga-cv.pdf" download>Download my CV (PDF)</a>
+              </li>
+              <li>
+                <i class="ph ph-map-pin" aria-hidden="true"></i>
+                <span>Homagama, Sri Lanka</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Validated by js/contact.js. On success it opens the visitor's email app with the message filled in. -->
+          <form class="contact__form" id="contact-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="contact-name">Your name</label>
+              <input class="field__input" id="contact-name" name="name" type="text" autocomplete="name"
+                     aria-describedby="contact-name-error">
+              <p class="field__error" id="contact-name-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="contact-email">Email address</label>
+              <input class="field__input" id="contact-email" name="email" type="email" autocomplete="email"
+                     aria-describedby="contact-email-error">
+              <p class="field__error" id="contact-email-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="contact-message">Message</label>
+              <textarea class="field__input field__input--textarea" id="contact-message" name="message" rows="5"
+                        aria-describedby="contact-message-hint contact-message-error"></textarea>
+              <p class="field__hint" id="contact-message-hint">A few lines about your idea or role is plenty. This opens your email app with the message ready to send.</p>
+              <p class="field__error" id="contact-message-error"></p>
+            </div>
+
+            <button class="btn btn--primary contact__submit" type="submit">
+              Write the email <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+            </button>
+            <p class="contact__status" id="contact-status" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; <span id="footer-year">2026</span> Ashan Iduranga</p>
+
+      <ul class="footer__social">
+        <li><a class="icon-btn" href="https://github.com/Ashan-Iduranga" target="_blank" rel="noopener" aria-label="GitHub"><i class="ph ph-github-logo" aria-hidden="true"></i></a></li>
+        <li><a class="icon-btn" href="https://www.linkedin.com/in/ashan-iduranga" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a></li>
+        <li><a class="icon-btn" href="mailto:idurangaashan2001@gmail.com" aria-label="Email"><i class="ph ph-envelope-simple" aria-hidden="true"></i></a></li>
+      </ul>
+
+      <a class="footer__top" href="#top">Back to top <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+    </div>
+  </footer>
+
+  <!-- Scripts: data files first, then logic, then main.js which starts everything -->
+  <script src="js/data/skills.js" defer></script>
+  <script src="js/data/projects.js" defer></script>
+  <script src="js/images.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/skills.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/contact.js" defer></script>
+  <script src="js/motion.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

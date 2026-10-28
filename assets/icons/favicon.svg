@@ -1,0 +1,6 @@
+<!-- favicon.svg: simple "A." monogram used as the browser tab icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#121418"/>
+  <text x="14" y="47" font-family="Impact, 'Arial Narrow', sans-serif" font-size="40" fill="#ececea">A</text>
+  <circle cx="46" cy="44" r="4" fill="#4a90c8"/>
+</svg>

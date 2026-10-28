@@ -1,0 +1,133 @@
+/*
+  about.css
+  About section: a short three-paragraph intro with the photo beside it,
+  then a row of four facts underneath.
+*/
+
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-6);
+  align-items: center;
+}
+
+.about__statement {
+  grid-column: 1 / span 7;
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.about__statement p + p {
+  margin-top: 1em;
+}
+
+/* Scale the statement up on wider screens (kept moderate: it's three paragraphs) */
+@media (min-width: 768px) {
+  .about__statement {
+    font-size: clamp(1.25rem, 0.9rem + 0.8vw, 1.625rem);
+    line-height: 1.45;
+  }
+}
+
+.about__statement em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+/* Photo to the right of the statement, slightly inset from the edge */
+.about__media {
+  grid-column: 9 / span 4;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+/* Same treatment as the hero photo: crop from near the top, and in dark mode
+   --photo-dim (variables.css) tones down the bright wall behind me */
+.about__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 10%;
+  filter: var(--image-filter) brightness(var(--photo-dim));
+  transition: transform 1.2s var(--ease-out), filter var(--duration-slow) var(--ease-out);
+}
+
+.about__media:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0.15) brightness(var(--photo-dim));
+}
+
+/* Gentle vignette so the light backdrop fades into the page instead of ending in a hard edge.
+   Uses ::before because ::after is the reveal curtain in motion.css (which still covers this). */
+.about__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse 80% 75% at 50% 40%, transparent 50%, color-mix(in srgb, var(--color-bg) var(--photo-vignette), transparent) 100%);
+  pointer-events: none;
+}
+
+/* Facts: one row of four, each with a rule over it */
+.about__facts {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.fact {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.fact__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.fact__value {
+  margin-top: var(--space-2);
+  font-size: var(--text-lg);
+  line-height: 1.4;
+}
+
+/* ---------- Tablet: facts in a 2 x 2 grid ---------- */
+@media (max-width: 1023px) {
+  .about__statement {
+    grid-column: 1 / span 7;
+  }
+
+  .about__media {
+    grid-column: 8 / -1;
+  }
+
+  .about__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Phone: everything stacks in one column ---------- */
+@media (max-width: 767px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+
+  .about__statement,
+  .about__media,
+  .about__facts {
+    grid-column: 1;
+  }
+
+  .about__facts {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}

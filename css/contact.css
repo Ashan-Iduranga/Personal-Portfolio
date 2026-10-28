@@ -1,0 +1,122 @@
+/*
+  contact.css
+  Contact section: one wide panel with a big headline and details on the left,
+  the message form on the right. Form field styles live in components.css.
+*/
+
+.contact__panel {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-7) var(--space-6);
+  padding: clamp(var(--space-5), 4vw, var(--space-8));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.contact__intro {
+  grid-column: 1 / span 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact__text {
+  max-width: 38ch;
+  margin-top: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.contact__details {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-7);
+}
+
+.contact__details li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+
+.contact__details i {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+}
+
+/* The copy button keeps its own quieter icon */
+.contact__details .copy-btn i {
+  font-size: 1em;
+  color: inherit;
+}
+
+.contact__details a {
+  border-bottom: 1px solid var(--color-border-strong);
+  transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.contact__details a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.contact__form {
+  grid-column: 7 / -1;
+  display: grid;
+  gap: var(--space-5);
+}
+
+.contact__submit {
+  justify-self: start;
+}
+
+/* Status message under the button (success or problem) */
+.contact__status {
+  font-size: var(--text-sm);
+}
+
+.contact__status:empty {
+  display: none;
+}
+
+.contact__status.is-success {
+  color: var(--color-success);
+}
+
+.contact__status.is-error {
+  color: var(--color-error);
+}
+
+/* ---------- Tablet and phone: stack the two halves ---------- */
+@media (max-width: 899px) {
+  /* One column. (12 columns with gaps would be wider than a phone screen.) */
+  .contact__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__intro,
+  .contact__form {
+    grid-column: 1 / -1;
+  }
+
+  .contact__details {
+    padding-top: var(--space-6);
+  }
+}
+
+@media (max-width: 479px) {
+  .contact__submit {
+    justify-self: stretch;
+  }
+}
