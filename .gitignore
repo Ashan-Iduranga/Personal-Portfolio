@@ -8,3 +8,6 @@
 .playwright-mcp/
 Thumbs.db
 .DS_Store
+
+.vercel
+.env*

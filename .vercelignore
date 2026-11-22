@@ -1,0 +1,8 @@
+# Files that stay out of the live site (notes and working files)
+PRODUCT.md
+**/README.txt
+.originals/
+.impeccable/
+.playwright-mcp/
+.env*
+.vercel/
