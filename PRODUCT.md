@@ -15,7 +15,7 @@ web
 
 The personal portfolio of Ashan Iduranga, a third-year BSc (Hons) Software Engineering student at NSBM Green University (Homagama, Sri Lanka). It shows what he builds and what he works with, so recruiters and clients can judge his ability.
 
-Success means the visitor goes on to **Ashan's GitHub** (to see the real code) and/or **connects on LinkedIn**. Contacting him by email or the form is a supporting path.
+Success means the visitor goes on to **Ashan's GitHub** (to see the real code), **connects on LinkedIn**, or tries a live project (Daily Strip). Contacting him by email or the form is a supporting path.
 
 ## Positioning
 
@@ -23,31 +23,33 @@ Full-stack web and cross-platform mobile work, "from the database to the last pi
 
 ## Operating Context
 
-- It's a single-page site: hero, about, skills, projects, contact, footer.
+- It's a single-page site: hero, about, projects, skills, contact, footer.
 - Visitors arrive from a CV, a job application, LinkedIn or a direct link.
 - The contact form has no server behind it. It opens the visitor's email app with the message filled in, addressed to <idurangaashan2001@gmail.com>.
 
 ## Capabilities and Constraints
 
 - **Stack:** plain static HTML, CSS and JavaScript, with no framework or build step.
-- **Hosting:** Hostinger is planned but not deployed yet.
+- **Hosting:** Hostinger is planned but not deployed yet (domain ashaniduranga.me). Don't deploy until Ashan says so.
 - **Content files:** content lives apart from code. Projects are in `js/data/projects.js` and skills in `js/data/skills.js`.
 - **Owner:** Ashan is a student who is still learning, so code stays readable and commented.
 - **Skills list:** it belongs to Ashan. Never add, remove or change skills without asking him first.
 - **Built-in behavior:** there are light and dark themes (following the device, with a toggle), and the site respects reduced-motion settings.
-- **Undecided:** whether a downloadable CV will be added (no file exists yet).
+- **CV:** "Download CV" links point to `assets/cv/ashan-iduranga-cv.pdf`. The file there is still a placeholder; Ashan will replace it before launch.
+- **Project media:** pictures are WebP composites of real screens (wide 1900x1000, narrow 1600x1200). A project can also have a short hover clip in `assets/video/` (mouse devices only, never with reduced motion).
 
 ## Brand Commitments
 
-- **Name:** Ashan Iduranga. The logo mark is "AI.".
-- **Voice:** plain, honest and modest. No inflated claims: skills show real durations, all under two years ("one project at a time").
+- **Name:** Ashan Iduranga. The logo is the word "Ashan." (with the accent-blue dot); the favicon is an "A." monogram.
+- **Voice:** plain, honest and modest. No inflated claims: skills are listed by category with no years or levels, and the section says everything is under two years of hands-on use ("one project at a time").
 - **Contact email:** <idurangaashan2001@gmail.com>.
 
 ## Evidence on Hand
 
 - **Education:** third-year BSc (Hons) Software Engineering at NSBM Green University. Expected graduation: 2028.
-- **Projects:** none real yet. The four on the site (Campus Bites, Wheelhouse Rentals, LedgerLite API, Portfolio V6) are **samples** that Ashan will replace. Don't present them as real work or invent details about them.
-- **Photos:** none yet. The site shows grayscale placeholder photos until Ashan adds his files in `assets/images/`.
+- **Projects (all real):** BOQ Filler (closed-source client product, sold with licence keys), Daily Strip (released Android app, free APK on GitHub Releases), the Daily Strip website (live at <https://daily-strip.vercel.app>), MemoStack (in progress), Internship Job Agent and Design Library MCP. "On the workbench": EchoSight and Baitless (planned). Don't invent details beyond what the project files show.
+- **Live proof:** Daily Strip is the only project with a public download and a live site, so it sits right after BOQ Filler.
+- **Photos:** real portrait and desk photos in `assets/images/` (shown greyscale until hover).
 - **GitHub:** <https://github.com/Ashan-Iduranga>. **LinkedIn:** <https://www.linkedin.com/in/ashan-iduranga>. They are the main success path.
 - **No testimonials, clients, awards or metrics.** Never fabricate them.
 

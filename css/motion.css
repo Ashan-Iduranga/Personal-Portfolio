@@ -73,7 +73,8 @@
   }
 
   /* "scale" is separate from "transform", so the hover zoom in about.css / projects.css still works */
-  .js .reveal-media img {
+  .js .reveal-media img,
+  .js .reveal-media video {
     scale: 1.18;
     transition:
       scale 1.8s var(--ease-out),
@@ -82,7 +83,9 @@
   }
 
   .js .is-visible .reveal-media img,
-  .js .reveal-media.is-visible img {
+  .js .reveal-media.is-visible img,
+  .js .is-visible .reveal-media video,
+  .js .reveal-media.is-visible video {
     scale: 1;
   }
 
@@ -269,7 +272,9 @@
       view-timeline-name: --media;
     }
 
-    .parallax img {
+    /* video: the hover clip on project cards moves exactly with its picture */
+    .parallax img,
+    .parallax video {
       position: absolute;
       top: -8%;
       left: 0;

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Build the parts of the page that come from data files
   renderProjects();     // js/projects.js
   renderBrewing();      // js/projects.js
+  initProjectVideos();  // js/projects.js (hover clips on project cards)
   renderSkills();       // js/skills.js
 
   // 2. Interactions
